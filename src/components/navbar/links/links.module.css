@@ -10,17 +10,21 @@
     font-weight: bold;
 }
 
-.menuButton,
+.menuButton{
+    display: none;
+}
 .mobileLinks{
     display: none;
 }
 
-.menuButton{
-    cursor: pointer;
-}
+
 @media(max-width: 768px){
     .links{
         display: none;
+    }
+    .menuButton{
+        display: block; 
+        cursor: pointer;
     }
     .mobileLinks{
         position: absolute;
