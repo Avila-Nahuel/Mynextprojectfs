@@ -1,9 +1,22 @@
 /* eslint-disable jsx-a11y/alt-text */
 import Image from 'next/image'
 import styles from './singlePost.module.css'
+import { actionAsyncStorage } from 'next/dist/client/components/action-async-storage.external'
 
-const SinglePostPage = ({params}) => {
-    console.log(params)
+const getData = async (slug) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`)
+
+    if(!res.ok){
+        throw new Error("Something went wrong")
+    }
+
+    return res.json()
+}
+
+const SinglePostPage = async ({params}) => {
+    const {slug} = params
+    const post = await getData(slug)
+    
     return(
         <div className={styles.container}>
             <div className={styles.imgContainer}>
@@ -13,7 +26,7 @@ const SinglePostPage = ({params}) => {
                 className={styles.img}></Image>
             </div>
             <div className={styles.textContainer}>
-                <h1 className={styles.title}>Title</h1>
+                <h1 className={styles.title}>{post.title}</h1>
                 <div className={styles.detail}>
                     <Image
                     className={styles.avatar}
@@ -31,7 +44,7 @@ const SinglePostPage = ({params}) => {
                     </div>
                 </div>
                 <div className={styles.content}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est temporibus assumenda, laudantium vel officia sint consectetur at vitae.
+                    {post.body}
                 </div>
             </div>
         </div>
