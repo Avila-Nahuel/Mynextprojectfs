@@ -1,11 +1,10 @@
-"use client";
-
+// "use client";
 import styles from './contact.module.css'
 import Image from 'next/image'
 
 const ContactPage = () => {
-
-    console.log('it worjs here!')
+    // const a = Math.random()
+    // console.log(a)
 
      return(
         <div className={styles.container}>
@@ -13,12 +12,16 @@ const ContactPage = () => {
                 <Image src="/contact.png" sizes='"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"' priority alt='ad' fill/>
             </div>
             <div className={styles.formContainer}>
+                {/* <HydrationTestNoSSR/> */}
+                {/* <div suppressHydrationWarning>
+                    {a}
+                </div> */}
                 <form action="" className={styles.form}>
                     <input type="text" placeholder='Name and Surname'/>
                     <input type="text" placeholder='Email Adress'/>
                     <input type="text" placeholder='Phone Number (Optional)'/>
                     <textarea name="" id="" cols="30" rows="10" placeholder='Message'></textarea>
-                    <button onClick={()=>console.log("clicked")}>Send</button>
+                    <button>Send</button>
                 </form>
             </div>
         </div>
